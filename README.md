@@ -29,9 +29,8 @@ Test your sample application.
        # cd myWebApp
        # dotnet run
        
-Follow the instructions for the sample URL.
-When you are finished type ctrl-c to stop server
+Follow the instructions to access the application via a browser.   When you are finished type ctrl-c to stop server
 
 ## Optional: Modify the .Net code
 Let's change the "Welcome" message to "Welcome from OpenShift Container Platform!".
-Navigate the Pages directory under your project.  In the Pages directory open the file titled Index.cshtml with your favorite editor.
+Navigate to the Pages directory under your project.   In the Pages directory open the file titled Index.cshtml with your favorite editor.
