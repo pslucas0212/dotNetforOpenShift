@@ -71,3 +71,27 @@ I chose to deploy this example as a binary artifact.  I'll use the binary artifa
       # oc create -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams.json
       # oc replace -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams.json
       
+## Build, Deploy and access your new .Net app
+- Create a new binary build
+
+      # oc new-build --name=my-web-app dotnet:5.0-ubi8 --binary=true
+      
+- Start the build and specify the path to the binary artifacts in .Net project (I'm at the "root" of my project folder).
+
+      # oc start-build my-web-app --from-dir=bin/Release/net5.0/publish
+      
+- You can check the logs to see if the build is completed.
+
+      # oc logs -f bc/my-web-app
+      
+- Create a new application
+
+      # oc new-app my-web-app
+      
+- Make the app available to the outside world
+
+      # oc expose service/my-web-app
+      
+- Get the the url to your app
+
+      # oc status
