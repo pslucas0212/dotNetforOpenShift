@@ -9,23 +9,23 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 Follow the instructions Create an OpenShift cluster -> https://cloud.redhat.com/openshift/create/local to install CodeReady Containers (CRC). Chose the "local" tab and select your OS.
 
 ## Prep your CodeReady Containers environment
-Set up CRC:
+- Set up CRC:
       
         # crc setup
         
 ## Start up CRC
-Start up crc an indluce the pull secret you previously downloaded
+- Start up crc an include the pull secret you previously downloaded
 
         # crc start -p ~/Documents/crc/pull-secret.txt
 
-Copy the information regarding URL to the OpenShift (OCP) console, and the ids and passwords for the admin and developer
+- Copy the information from the output of the crc start command regardin OpenShift (OCP) console URL, and the ids and passwords for the admin and developer
 
 ## Create a sample Hello World .Net web app
-I created my sample Hello World .Net web app in directory called projects
+I created my sample Hello World .Net web app in a directory called projects
 
        # dotnet new webApp -o myWebApp --no-https
        
-Test your sample application.
+- Test your sample application.
 
        # cd myWebApp
        # dotnet run
@@ -49,7 +49,8 @@ Let's change the "Welcome" message to "Welcome from OpenShift Container Platform
 - Go back to the "root" of your project folder and rerun the application to see the changed file (see previous steps)
 
 ## Prep app for OCP
-I chose to deploy this example as a binary artifact.  I'll use the binary artifact with OCP to build the container that it runs. Use the following command to make the .Net app ready for the OCP build and deploy process.
+I chose to deploy this example as a binary artifact.  I'll use the binary artifact with OCP to build the container. 
+- Use the following command to make the .Net app ready for the OCP build and deploy process.
 
       # dotnet publish myWebApp -f net5.0 -c Release
       
