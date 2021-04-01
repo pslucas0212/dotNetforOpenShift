@@ -95,3 +95,9 @@ I chose to deploy this example as a binary artifact.  I'll use the binary artifa
 - Get the the url to your app
 
       # oc status
+      
+## Access the OCP console to see your project and app
+- My URL looked like this: https://console-openshift-console.apps-crc.testing
+
+      
+      
