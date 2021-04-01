@@ -29,8 +29,45 @@ Test your sample application.
        # cd myWebApp
        # dotnet run
        
-Follow the instructions to access the application via a browser.   When you are finished type ctrl-c to stop server
+- Follow the instructions to access the application via a browser.
+- The url for the app is likely: http://localhost:5000
+- When you are finished type Ctrl-c to stop server
 
 ## Optional: Modify the .Net code
 Let's change the "Welcome" message to "Welcome from OpenShift Container Platform!".
-Navigate to the Pages directory under your project.   In the Pages directory open the file titled Index.cshtml with your favorite editor.
+- Navigate to the Pages directory under your project.
+- In the Pages directory open the file titled Index.cshtml with your favorite editor.
+- Change the following line:
+
+      <h1 class="display-4">Welcome</h1>
+      
+- to:
+
+      <h1 class="display-4">Welcome to OpenShift Container Platform!</h1>
+      
+- Go back to the "root" of your project folder and rerun the application to see the changed file (see previous steps)
+
+## Prep app for OCP
+I chose to deploy this example as a binary artifact.  I'll use the binary artifact with OCP to build the container that it runs. Use the following command to make the .Net app ready for the OCP build and deploy process.
+
+      # dotnet publish myWebApp -f net5.0 -c Release
+      
+## Prep OCP for .Net
+- Login to OCP as developer
+
+      # eval $(crc oc-env)
+      # oc login -u developer https://api.crc.testing:6443
+      
+- Create a new OCP project (K8s namespace)
+
+      # oc new-project my-first-app
+      
+- You can check the project you are currently in with the following oc command:
+
+      # oc status
+      
+- If this is your first .Net project in CRC, then you'll need to add a .Net imagestreams
+
+      # oc create -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams.json
+      # oc replace -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams.json
+      
