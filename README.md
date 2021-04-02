@@ -3,10 +3,10 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 
 ### Pre-req .Net 5 SDK
 - Note: I'm using a Mac for this example.
-- Download and install .Net 5 SDK for your OS -> https://dotnet.microsoft.com/download/dotnet/5.0
+- Download and install [.Net 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0) for your OS.
 
 ## Install Red Hat CodeReady Containers
-Follow the instructions **Create an OpenShift cluster** -> https://cloud.redhat.com/openshift/create/local to install CodeReady Containers (CRC). Chose the "local" tab and select your OS.
+Follow the instructions [Create an OpenShift cluster](https://cloud.redhat.com/openshift/create/local) to install CodeReady Containers (CRC). Chose the "local" tab and select your OS.
 
 ## Prep your CodeReady Containers environment
 - Set up CRC:
@@ -104,5 +104,5 @@ I chose to deploy this example as a binary artifact.  I'll use the binary artifa
 ##
 ## References
 - [GETTING STARTED WITH .NET ON RHEL 8](https://access.redhat.com/documentation/en-us/net/5.0/html-single/getting_started_with_.net_on_rhel_8/index#publishing-apps-using-dotnet_using-dotnet-on-rhel)
-- Getting Strated Guide - CodeReady Containers 1.24 -> https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.24/html/getting_started_guide/index
-Managing Imagestreams OCP 4.7 -> https://docs.openshift.com/container-platform/4.7/openshift_images/image-streams-manage.html
+- [Getting Strated Guide - CodeReady Containers 1.24](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.24/html/getting_started_guide/index)
+[Managing Imagestreams OCP 4.7](https://docs.openshift.com/container-platform/4.7/openshift_images/image-streams-manage.html)
