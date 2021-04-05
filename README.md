@@ -7,6 +7,7 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 
 ## Install Red Hat CodeReady Containers
 Follow the instructions [Create an OpenShift cluster](https://cloud.redhat.com/openshift/create/local) to install CodeReady Containers (CRC). Chose the "local" tab and select your OS.
+- Note: On the Mac I installed crc in the /usr/local/bin direcotry
 
 ## Prep your CodeReady Containers environment
 - Set up CRC:
