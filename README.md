@@ -1,4 +1,4 @@
-# Run .Net code on Red Hat OpenShift Container Platform
+# Run .Net code on Red Hat OpenShift Container Platform on Mac OS
 Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (Code Ready Containers example)
 - Note: This tutorial was last updated 05 April 2021
 
