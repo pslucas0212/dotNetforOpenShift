@@ -287,4 +287,4 @@ http://my-web-app-my-first-app.apps-crc.testing to pod port 8080-tcp (svc/my-web
 - [GETTING STARTED WITH .NET ON RHEL 8](https://access.redhat.com/documentation/en-us/net/5.0/html-single/getting_started_with_.net_on_rhel_8/index#publishing-apps-using-dotnet_using-dotnet-on-rhel)
 - [Getting Strated Guide - CodeReady Containers 1.26](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.26/html/getting_started_guide/index)
 - [Managing Imagestreams OCP 4.7](https://docs.openshift.com/container-platform/4.7/openshift_images/image-streams-manage.html)
-- ![.NET 5.0 SDK and Runtime - Universal Base Image](https://catalog.redhat.com/software/containers/ubi8/dotnet-50/5f62770118e80cdc21edf226?gti-tabs=unauthenticated)
+- ![.NET 5.0 SDK and Runtime - Universal Base Image](https://catalog.redhat.com/software/containers/ubi8/dotnet-50-runtime/5f6276d4b4f9bc9206b91c8a?gti-tabs=unauthenticated)
