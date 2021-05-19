@@ -234,15 +234,15 @@ svc/my-web-app - 10.217.4.30:8080
 1 info identified, use 'oc status --suggest' to see details.
 ```
 
-- At this point we can log into the OCP console and see our application
+- At this point we can log into the OCP console and see our application.
 
 ![OCP Console login](/images/dot05.png)
 
-- Let's click on ...url
-
+- Click on the Topology tab on the left side and the click the my-web-app project link.
+- 
 ![OCP Console Topology](/images/dot06.png)
 
-- Hover over the app icon and click on the blue arrow to see more detail about our application.  Notice there is no route defined to get to our application.  A services is generated when we created a new application, but we need to expose that service via a route to access our application from outside the OCP cluster
+- Hover over the app icon and click on the blue arrow to see more detail about our application.  Notice there is no route defined to get to our application.  A service is created when we created a new application, but we need to expose that service via a route to access our application from outside the OCP cluster
 
 ![application detail](/images/dot07.png)
 
@@ -269,7 +269,7 @@ http://my-web-app-my-first-app.apps-crc.testing to pod port 8080-tcp (svc/my-web
 1 info identified, use 'oc status --suggest' to see details.
 ```
 
-- Back at the OCP console we now see our app is available to the outside world
+- Back at the OCP console we now see our app is available to the outside world.  You can click on the link in the Routes section to access your application.
 
 ![App route available](/images/dot08.png)
 
