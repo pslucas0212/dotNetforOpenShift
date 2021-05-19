@@ -5,13 +5,31 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 ### Pre-req .Net 5 SDK
 - Note: I'm using a Mac for this example.
 - Download and install [.Net 5 SDK](https://dotnet.microsoft.com/download/dotnet/5.0) for your OS.
-- Note: For this tutorial I used Microsoft's installation package for SDK 5.0.21
+- Note: For this tutorial I used Microsoft's installation package for SDK 5.0.203
+
+![Download .Net 5 SDK](/images/dot02.png)
+
+- Install the .Net SDK per the instructions for your OS
+- Test your .Net installation
+
+      % dotnet --version
+      5.0.23
 
 ## Install Red Hat CodeReady Containers
-Follow the instructions [Create an OpenShift cluster](https://cloud.redhat.com/openshift/create/local) to install CodeReady Containers (CRC). Chose the "local" tab and select your OS.
+- Download the Red Hat CodeReady Container (CRC) for you OS here [Create an OpenShift cluster](https://cloud.redhat.com/openshift/create/local) 
+- Chose the "local" tab and select your OS.
+- After you download CRC, click the Download pull secret
+
+![Create an OpenShift cluster](/images/dot01a.png)
+
 - Note: On the Mac I installed crc in the /usr/local/bin direcotry
 
 ## Prep your CodeReady Containers environment
+- I place the pull secret in my home Documents folder in a folder I labeled crc.  On the Mac or Linux it would like this: ~/Documents/crc
+
+      % cp pull-secret\(1\) ~/Documents/crc/pull-secret.txt
+
+- 
 - Set up CRC:
       
         # crc setup
