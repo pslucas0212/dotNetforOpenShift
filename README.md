@@ -124,28 +124,38 @@ Let's change the "Welcome" message to "Welcome from OpenShift Container Platform
 
 ## Prep app for OCP
 I chose to deploy this example as a binary artifact.  I'll use the binary artifact with OCP to build the container. 
-- Use the following command to make the .Net app ready for the OCP build and deploy process.
+- Use the following command to make the .Net app ready for the OCP build and deploy process. The dotnet publish command preps the applicaiton for deployment storing the artifacts in a folder.  The -f swith sets the framework which .Net 5.0 in this case and -c switch defines the build configuration
 
-      # dotnet publish myWebApp -f net5.0 -c Release
-      
+      % cd ..
+      % dotnet publish myWebApp -f net5.0 -c Release
+     
+- You are ready to go when that All projcets are up-to-date....
+
 ## Prep OCP for .Net
 - Login to OCP as developer
 
-      # eval $(crc oc-env)
-      # oc login -u developer https://api.crc.testing:6443
-      
-- Create a new OCP project (K8s namespace)
+      % eval $(crc oc-env)
+      % oc login -u developer https://api.crc.testing:6443
 
-      # oc new-project my-first-app
+- To see who you are logged in as type...
+
+      % oc whoami
+      developer
+      
+- Create a new OCP project (K8s namespace) for our .Net Welcome applicationoc
+
+      % oc new-project my-first-app
       
 - You can check the project you are currently in with the following oc command:
 
-      # oc status
-      
+      % oc get projects
+      NAME           DISPLAY NAME   STATUS
+      my-first-app                  Active
+
 - If this is your first .Net project in CRC, then you'll need to add a .Net imagestreams
 
-      # oc create -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams.json
-      # oc replace -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams.json
+      % oc create -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams.json
+      % oc replace -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/dotnet_imagestreams.json
       
 ## Build, Deploy and access your new .Net app
 - Create a new binary build
