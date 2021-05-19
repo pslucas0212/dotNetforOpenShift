@@ -23,9 +23,9 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 ![Create an OpenShift cluster](/images/dot01a.png)
 
 - After you download the code run the installer.  The latest release of CRC takes care of installing CRC for you.
--
+
 ## Prep your CodeReady Containers environment
-- I place the pull secret in my home Documents folder in a folder I labeled crc.  On the Mac or Linux it would like this: ~/Documents/crc
+- After installing CRC, we will do the rest of the work on the command line.  On the Mac open a Terminal window.  I place the pull secret in my home Documents folder in a folder I labeled crc.  On the Mac or Linux it would like this: ~/Documents/crc
 
       % cp pull-secret\(1\) ~/Documents/crc/pull-secret.txt
 
@@ -40,28 +40,56 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 ## Start up CRC
 - Start up crc an include the pull secret you previously downloaded
 
-        # crc start -p ~/Documents/crc/pull-secret.txt
+        % crc start -p ~/Documents/crc/pull-secret.txt
 
-- Copy the information from the output of the crc start command regardin OpenShift (OCP) console URL, and the ids and passwords for the admin and developer
+- Depending on your hardware, it make several minutes for CRC to startup.  Be sure to copy the login information that is displayed on the console after starting CRC.  See example output below.
+
+```
+Started the OpenShift cluster.
+
+The server is accessible via web console at:
+  https://console-openshift-console.apps-crc.testing
+
+Log in as administrator:
+  Username: kubeadmin
+  Password: TDjTx-BwDqi-vDvqA-VAxJz
+
+Log in as user:
+  Username: developer
+  Password: developer
+
+Use the 'oc' command line interface:
+  $ eval $(crc oc-env)
+  $ oc login -u developer https://api.crc.testing:6443
+```
 
 ## Create a sample Hello World .Net web app
-I created my sample Hello World .Net web app in a directory called projects
+Now let's create our sample .Net application.  Chose a directory wher you would like to store your sample appication.  I created my sample Hello World .Net web app in a directory called projects
 
-       # dotnet new webApp -o myWebApp --no-https
+       % dotnet new webApp -o myWebApp --no-https
        
-- Test your sample application.
+- When the sample app code has finished generating change into the applicaiton's directory and start up the applicaiton.
 
-       # cd myWebApp
-       # dotnet run
+       % cd myWebApp
+       % dotnet run
        
-- Follow the instructions to access the application via a browser.
+- The app starts up quickly and is ready to test when you see the last line that has the **Contentr root path:...**.  Follow the instructions to access the application via a browser.
 - The URL for the app is likely: http://localhost:5000
-- When you are finished type Ctrl-c to stop server
 
-## Optional: Modify the .Net code
+![.Net App Welcome Page](/images/dot03.png)
+
+- When you are finished in the terminal window on the command line type Ctrl-c to stop server
+
+## Modify the .Net code
 Let's change the "Welcome" message to "Welcome from OpenShift Container Platform!".
 - Navigate to the Pages directory under your project.
-- In the Pages directory open the file titled Index.cshtml with your favorite editor.
+
+      % cd Pages
+
+- In the Pages directory open the file titled Index.cshtml with your favorite editor. 
+
+      % nano Index.cshtml
+      
 - Change the following line:
 
       <h1 class="display-4">Welcome</h1>
@@ -70,7 +98,29 @@ Let's change the "Welcome" message to "Welcome from OpenShift Container Platform
 
       <h1 class="display-4">Welcome to OpenShift Container Platform!</h1>
       
-- Go back to the "root" of your project folder and rerun the application to see the changed file (see previous steps)
+- My file looked like this...
+
+```
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to OpenShift Container Platform</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+```
+      
+- Go back to the "root" of your project folder and rerun the application to see the changed message
+
+      % cd ..
+      % dotnet run
+
+![.Net Welcome to OpenShift Container Platform](/images/dot04.png)
+
+- When finished on the command line type Ctrl-c to stop server
 
 ## Prep app for OCP
 I chose to deploy this example as a binary artifact.  I'll use the binary artifact with OCP to build the container. 
