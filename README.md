@@ -22,17 +22,20 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 
 ![Create an OpenShift cluster](/images/dot01a.png)
 
-- Note: On the Mac I installed crc in the /usr/local/bin direcotry
-
+- After you download the code run the installer.  The latest release of CRC takes care of installing CRC for you.
+-
 ## Prep your CodeReady Containers environment
 - I place the pull secret in my home Documents folder in a folder I labeled crc.  On the Mac or Linux it would like this: ~/Documents/crc
 
       % cp pull-secret\(1\) ~/Documents/crc/pull-secret.txt
 
-- 
-- Set up CRC:
+- Check the CRC version.  As of 5/18/2021 the latest release was 1.26 with OpenShift 4.7.9
+
+      % crc version
       
-        # crc setup
+- Run the setup command to download the CRC bundle and prep your environment. This typically takes a few mintues.
+      
+      % crc setup
         
 ## Start up CRC
 - Start up crc an include the pull secret you previously downloaded
