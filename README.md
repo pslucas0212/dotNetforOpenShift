@@ -1,6 +1,7 @@
 # Run .Net code on Red Hat OpenShift Container Platform on Mac OS
-Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (Code Ready Containers example)
-- Note: This tutorial was last updated 05 April 2021
+Create a simple Hello World .Net 5 application and run it on a local instance of Red Hat OpenShift AKA Code Ready Containers.  See how easy it is to get started with development on OpenShift Container Platform (OCP).  OCP supports many languages and you can easily bring your .Net code to the world of containers and Kubernetes with OCP.
+
+- Updated 19 May 2021
 
 ### Pre-req .Net 5 SDK
 - Note: I'm using a Mac for this example.
@@ -10,7 +11,7 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 ![Download .Net 5 SDK](/images/dot02.png)
 
 - Install the .Net SDK per the instructions for your OS
-- Test your .Net installation
+- Test your .Net SDK installation
 
       % dotnet --version
       5.0.23
@@ -25,17 +26,20 @@ Create a simple Hello World .Net 5 application and run it on Red Hat OpenShift (
 - After you download the code run the installer.  The latest release of CRC takes care of installing CRC for you.
 
 ## Prep your CodeReady Containers environment
-- After installing CRC, we will do the rest of the work on the command line.  On the Mac open a Terminal window.  I place the pull secret in my home Documents folder in a folder I labeled crc.  On the Mac or Linux it would like this: ~/Documents/crc
+- After installing CRC, we will do the rest of the work on the command line.  On the Mac open a Terminal window.  I placed the pull secret in my home Documents folder in a folder I labeled crc.  On the Mac or Linux it might look like this: ~/Documents/crc
 
       % cp pull-secret\(1\) ~/Documents/crc/pull-secret.txt
 
 - Check the CRC version.  As of 5/18/2021 the latest release was 1.26 with OpenShift 4.7.9
 
       % crc version
+      CodeReady Containers version: 1.26.0+31f06c09
+      OpenShift version: 4.7.8 (not embedded in executable)
       
 - Run the setup command to download the CRC bundle and prep your environment. This typically takes a few mintues.
       
       % crc setup
+      <output omitted>
         
 ## Start up CRC
 - Start up crc an include the pull secret you previously downloaded
@@ -73,12 +77,12 @@ Now let's create our sample .Net application.  Chose a directory wher you would 
        % cd myWebApp
        % dotnet run
        
-- The app starts up quickly and is ready to test when you see the last line that has the **Contentr root path:...**.  Follow the instructions to access the application via a browser.
+- The app starts up quickly and is ready to test when **Contentr root path:...** on the treminal screend.  Follow the instructions to access the application via a browser.
 - The URL for the app is likely: http://localhost:5000
 
 ![.Net App Welcome Page](/images/dot03.png)
 
-- When you are finished in the terminal window on the command line type Ctrl-c to stop server
+- When you are finished type Ctrl-c from the terminal window to stop server.
 
 ## Modify the .Net code
 Let's change the "Welcome" message to "Welcome from OpenShift Container Platform!".
@@ -120,28 +124,28 @@ Let's change the "Welcome" message to "Welcome from OpenShift Container Platform
 
 ![.Net Welcome to OpenShift Container Platform](/images/dot04.png)
 
-- When finished on the command line type Ctrl-c to stop server
+- When finished type Ctrl-c in the terminal window to stop the server.
 
 ## Prep app for OCP
-- Use the following command to make the .Net app ready for the OCP build and deploy process. The dotnet publish command preps the applicaiton for deployment storing the artifacts in a folder.  The -f swith sets the framework which .Net 5.0 in this case and -c switch defines the build configuration
+- Use the following command to make the .Net app ready for the OCP build and deploy process. The dotnet publish command preps the applicaiton for deployment storing the artifacts in a folder.  The -f swith sets the framework to .Net 5.0 and -c switch defines the build configuration
 
       % cd ..
       % dotnet publish myWebApp -f net5.0 -c Release
      
-- You are ready to go when that All projcets are up-to-date....
+- You are ready to go when see the statement All projcets are up-to-date.... in the terminal window.
 
 ## Prep OCP for .Net
-- Login to OCP as developer
+- Login to OCP as developerl
 
       % eval $(crc oc-env)
       % oc login -u developer https://api.crc.testing:6443
 
-- To see who you are logged in as type...
+- To see who you are logged in as type the following
 
       % oc whoami
       developer
       
-- Create a new OCP project (K8s namespace) for our .Net Welcome applicationoc
+- Create a new OCP project (K8s namespace) for our .Net Welcome application.
 
       % oc new-project my-first-app
       
@@ -194,7 +198,7 @@ build.build.openshift.io/my-web-app-1 started
 
       % oc logs -f bc/my-web-app
       
-- Create our new application
+- Create our new application on OCP.
 
       % oc new-app my-web-app
    
@@ -217,7 +221,7 @@ build.build.openshift.io/my-web-app-1 started
     Run 'oc status' to view your app.
 ```
 
-- You can check the status of your app
+- You can check the status of your app.
 
       % oc status
    
@@ -247,12 +251,12 @@ svc/my-web-app - 10.217.4.30:8080
 ![application detail](/images/dot07.png)
 
 
-- Back at the command line let's make our app available to the outside world
+- Back at the command line let's make our app available to the outside world.
 
       % oc expose service/my-web-app
       route.route.openshift.io/my-web-app exposed
       
-- Get the the URL to your app
+- Get the the URL to your app.
 
       # oc status
 
@@ -281,6 +285,6 @@ http://my-web-app-my-first-app.apps-crc.testing to pod port 8080-tcp (svc/my-web
 ##
 ## References
 - [GETTING STARTED WITH .NET ON RHEL 8](https://access.redhat.com/documentation/en-us/net/5.0/html-single/getting_started_with_.net_on_rhel_8/index#publishing-apps-using-dotnet_using-dotnet-on-rhel)
-- [Getting Strated Guide - CodeReady Containers 1.24](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.24/html/getting_started_guide/index)
+- [Getting Strated Guide - CodeReady Containers 1.26](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.28/html/getting_started_guide/index)
 - [Managing Imagestreams OCP 4.7](https://docs.openshift.com/container-platform/4.7/openshift_images/image-streams-manage.html)
 - ![.NET 5.0 SDK and Runtime - Universal Base Image](https://catalog.redhat.com/software/containers/ubi8/dotnet-50/5f62770118e80cdc21edf226?gti-tabs=unauthenticated)
