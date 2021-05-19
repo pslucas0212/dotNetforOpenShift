@@ -239,7 +239,7 @@ svc/my-web-app - 10.217.4.30:8080
 ![OCP Console login](/images/dot05.png)
 
 - Click on the Topology tab on the left side and the click the my-web-app project link.
-- 
+
 ![OCP Console Topology](/images/dot06.png)
 
 - Hover over the app icon and click on the blue arrow to see more detail about our application.  Notice there is no route defined to get to our application.  A service is created when we created a new application, but we need to expose that service via a route to access our application from outside the OCP cluster
