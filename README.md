@@ -1,8 +1,9 @@
-Updated 19 May 2021
+
 
 # Run .Net code on Red Hat OpenShift Container Platform on Mac OS
 Create a simple Hello World .Net 5 application and run it on a local instance of Red Hat OpenShift AKA Code Ready Containers.  See how easy it is to get started with development on OpenShift Container Platform (OCP).  OCP supports many languages and you can easily bring your .Net code to the world of containers and Kubernetes with OCP.
 
+Updated 19 May 2021
 
 ### Pre-req .Net 5 SDK
 - Note: I'm using a Mac for this example.
